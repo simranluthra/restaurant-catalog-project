@@ -1,0 +1,147 @@
+{% extends "base2.html" %}
+  {% block content %}
+  <article class="row bg-dark">
+    <section class="col-md-12 text-white px-4 pt-2 pb-2">
+      <button class="btn btn-link text-white" type="button" name="button">
+        <a class="h5 text-white" href="{{url_for('newMenuItem', restaurant_id = restaurant.id)}}">Create an Item</a>
+      </button>
+    </section>
+  </article>
+  <article class="row bg-dark px-4">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="bg-secondary p-2">
+      {% for message in messages %}
+      <span class="text-white">{{message}}</span>
+      <br class="col-md-12">
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+       {% if items !=[] %}
+       {% if items|selectattr('course', 'equalto', 'Appetizer')|list|length > 0 %}
+       <div class="col-md-12 mt-2">
+         <h2 class="text-white"><u>Appetizer</u></h2>
+       </div>
+         {% for i in items %}
+           {% if i.course == 'Appetizer' %}
+           <div class="col-md-12 mt-2">
+             <h4 class="text-white">{{i.name}}</h4>
+           </div>
+           <div class="col-md-12">
+             <p class="text-white">{{i.description}}</p>
+           </div>
+           <div class="col-md-12">
+             <p class="text-white">Price: ${{i.price}}</p>
+           </div>
+           <br>
+           <div>
+             <button type="button" name="button" class="btn btn-info mx-3">
+               <a class="text-white" href = "{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}">Edit</a>
+             </button>
+           </div>
+           <div>
+             <button type="button" name="button" class="btn btn-danger mx-2">
+               <a class="text-white" href = "{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}">Delete</a>
+             </button>
+           </div>
+           <br><br>
+           {% endif %}
+         {% endfor %}
+         {% endif %}
+
+        {% if items|selectattr('course', 'equalto', 'Entree')|list|length > 0 %}
+         <div class="col-md-12 mt-2">
+           <h2 class="text-white"><u>Entree</u></h2>
+         </div>
+         {% for i in items %}
+           {% if i.course == 'Entree' %}
+           <div class="col-md-12 mt-2">
+             <h4 class="text-white">{{i.name}}</h4>
+           </div>
+           <div class="col-md-12">
+             <p class="text-white">{{i.description}}</p>
+           </div>
+           <div class="col-md-12">
+             <p class="text-white">Price: ${{i.price}}</p>
+           </div>
+           <br>
+           <div>
+             <button type="button" name="button" class="btn btn-info mx-3">
+               <a class="text-white" href = "{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}">Edit</a>
+             </button>
+           </div>
+           <div>
+             <button type="button" name="button" class="btn btn-danger mx-2">
+               <a class="text-white" href = "{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}">Delete</a>
+             </button>
+           </div>
+           <br><br>
+           {% endif %}
+         {% endfor %}
+         {% endif %}
+
+         {% if items|selectattr('course', 'equalto', 'Beverage')|list|length > 0 %}
+         <div class="col-md-12 mt-2">
+           <h2 class="text-white"><u>Beverage</u></h2>
+         </div>
+         {% for i in items %}
+           {% if i.course == 'Beverage' %}
+           <div class="col-md-12 mt-2">
+             <h4 class="text-white">{{i.name}}</h4>
+           </div>
+           <div class="col-md-12">
+             <p class="text-white">{{i.description}}</p>
+           </div>
+           <div class="col-md-12">
+             <p class="text-white">Price: ${{i.price}}</p>
+           </div>
+           <br>
+           <div>
+             <button type="button" name="button" class="btn btn-info mx-3">
+               <a class="text-white" href = "{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}">Edit</a>
+             </button>
+           </div>
+           <div>
+             <button type="button" name="button" class="btn btn-danger mx-2">
+               <a class="text-white" href = "{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}">Delete</a>
+             </button>
+           </div>
+           <br><br>
+           {% endif %}
+         {% endfor %}
+          {% endif %}
+
+        {% if items|selectattr('course', 'equalto', 'Dessert')|list|length > 0 %}
+         <div class="col-md-12 mt-2">
+           <h2 class="text-white"><u>Dessert</u></h2>
+         </div>
+         {% for i in items %}
+           {% if i.course == 'Dessert' %}
+           <div class="col-md-12 mt-2">
+             <h4 class="text-white">{{i.name}}</h4>
+           </div>
+           <div class="col-md-12">
+             <p class="text-white">{{i.description}}</p>
+           </div>
+           <div class="col-md-12">
+             <p class="text-white">Price: ${{i.price}}</p>
+           </div>
+           <br>
+           <div>
+             <button type="button" name="button" class="btn btn-info mx-3">
+               <a class="text-white" href = "{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}">Edit</a>
+             </button>
+           </div>
+           <div>
+             <button type="button" name="button" class="btn btn-danger mx-2">
+               <a class="text-white" href = "{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}">Delete</a>
+             </button>
+           </div>
+           <br><br>
+           {% endif %}
+         {% endfor %}
+         {% endif %}
+       {% endif %}
+  </article>
+  {% endblock %}

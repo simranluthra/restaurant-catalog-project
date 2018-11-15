@@ -1,0 +1,71 @@
+{% extends "structure.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-12 bg-warning mt-1">
+    <h1> Edit Menu Item </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <form action="{{url_for('editMenuItem',restaurant_id=restaurant_id, menu_id=menu_id)}}" method = 'post'>
+      <div class="form-group">
+        <label for="Itemname" class="text-dark">Name of Menu Item:</label>
+        <input type="text" name="name" class="form-control" id="Itemname" placeholder="{{item.name }}">
+      </div>
+      <div class="form-group">
+        <label for="ItemDescription" class="text-dark">Description:</label>
+        <textarea class="form-control" name="description" id="ItemDescription" rows="3" placeholder="{{item.description}}"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="ItemPrice" class="text-dark">Price:</label>
+        <input type="number" name="price" class="form-control" id="ItemPrice" placeholder="{{item.price}}">
+      </div>
+      <div class="form-group">
+        <label class="text-dark">Course:</label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label text-dark">
+          {% if item.course == 'Appetizer' %}
+          <input type="radio" class="form-check-input" name="course" id="Appetizer" value="Appetizer" checked>
+          {%else%}
+          <input type="radio" class="form-check-input" name="course" id="Appetizer" value="Appetizer">
+          {% endif %}
+          Appetizer
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label text-dark">
+          {% if item.course == 'Entree' %}
+          <input type="radio" class="form-check-input" name="course" id="Entree" value="Entree" checked>
+          {%else%}
+          <input type="radio" class="form-check-input" name="course" id="Entree" value="Entree">
+          {% endif %}
+            Entree
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label text-dark">
+          {%if item.course =='Beverage'%}
+          <input type="radio" class="form-check-input" name="course" id="Beverage" value="Beverage" checked>
+          {% else %}
+          <input type="radio" class="form-check-input" name="course" id="Beverage" value="Beverage">
+          {% endif %}
+            Beverage
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label text-dark">
+          {% if item.course == 'Dessert'%}
+          <input type="radio" class="form-check-input" name="course" id="Dessert" value="Dessert" checked>
+          {% else %}
+          <input type="radio" class="form-check-input" name="course" id="Dessert" value="Dessert">
+          {% endif %}
+            Dessert
+        </label>
+      </div>
+    <input type='submit' class="btn btn-danger" value='Edit'>
+    <a class="btn btn-primary" href = '{{url_for("restaurantMenu", restaurant_id=restaurant_id)}}'> Cancel </a>
+    </form>
+  </div>
+</div>
+{% endblock %}

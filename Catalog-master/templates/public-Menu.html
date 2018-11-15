@@ -1,0 +1,103 @@
+{% extends "base2.html" %}
+  {% block content %}
+    <article class="row bg-dark px-4">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+      <div class="bg-secondary p-2">
+        {% for message in messages %}
+        <span class="text-white">{{message}}</span>
+        <br class="col-md-12">
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+
+         {% if items !=[] %}
+         {% if items|selectattr('course', 'equalto', 'Appetizer')|list|length > 0 %}
+         <div class="col-md-12 mt-2">
+           <h2 class="text-white"><u>Appetizer</u></h2>
+         </div>
+           {% for i in items %}
+             {% if i.course == 'Appetizer' %}
+             <div class="col-md-12 mt-2">
+               <h4 class="text-white">{{i.name}}</h4>
+             </div>
+             <div class="col-md-12">
+               <p class="text-white">{{i.description}}</p>
+             </div>
+             <div class="col-md-12">
+               <p class="text-white">Price: ${{i.price}}</p>
+             </div>
+             <hr>
+             <br><br>
+             {% endif %}
+           {% endfor %}
+           {% endif %}
+
+        
+           {% if items|selectattr('course', 'equalto', 'Entree')|list|length > 0 %}
+           <div class="col-md-12 mt-2">
+             <h2 class="text-white"><u>Entree</u></h2>
+           </div>
+           {% for i in items %}
+             {% if i.course == 'Entree' %}
+             <div class="col-md-12 mt-2">
+               <h4 class="text-white">{{i.name}}</h4>
+             </div>
+             <div class="col-md-12">
+               <p class="text-white">{{i.description}}</p>
+             </div>
+             <div class="col-md-12">
+               <p class="text-white">Price: ${{i.price}}</p>
+             </div>
+             <hr>
+             <br><br>
+             {% endif %}
+           {% endfor %}
+           {% endif %}
+
+           {% if items|selectattr('course', 'equalto', 'Beverage')|list|length > 0 %}
+           <div class="col-md-12 mt-2">
+             <h2 class="text-white"><u>Beverage</u></h2>
+           </div>
+           {% for i in items %}
+             {% if i.course == 'Beverage' %}
+             <div class="col-md-12 mt-2">
+               <h4 class="text-white">{{i.name}}</h4>
+             </div>
+             <div class="col-md-12">
+               <p class="text-white">{{i.description}}</p>
+             </div>
+             <div class="col-md-12">
+               <p class="text-white">Price: ${{i.price}}</p>
+             </div>
+             <hr>
+             <br><br>
+             {% endif %}
+           {% endfor %}
+           {% endif %}
+
+           {% if items|selectattr('course', 'equalto', 'Dessert')|list|length > 0 %}
+           <div class="col-md-12 mt-2">
+             <h2 class="text-white"><u>Dessert</u></h2>
+           </div>
+           {% for i in items %}
+             {% if i.course == 'Dessert' %}
+             <div class="col-md-12 mt-2">
+               <h4 class="text-white">{{i.name}}</h4>
+             </div>
+             <div class="col-md-12">
+               <p class="text-white">{{i.description}}</p>
+             </div>
+             <div class="col-md-12">
+               <p class="text-white">Price: ${{i.price}}</p>
+             </div>
+             <hr>
+             <br><br>
+             {% endif %}
+           {% endfor %}
+           {% endif %}
+         {% endif %}
+    </article>
+  {% endblock %}

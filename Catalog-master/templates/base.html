@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Catalog</title>
+    {% include "header.html" %}
+  </head>
+  <body class="bg-dark">
+    <div class="fluid-container">
+      <header class="row bg-success">
+        
+        <div class="col-md-10 text-center">
+          <h1 class="text-white">Restaurants</h1>
+        </div>
+        <div class="col-md-2 text-right pt-2 pr-5">
+          {%if 'username' not in session %}
+            <button class="btn bg-faded text-black" type="button" name="button" data-toggle="modal" data-target="#myModal">
+              Click Here to Login
+            </button>
+            {% include "login-base.html" %}
+			    {% else %}
+          <a href="{{url_for('disconnect')}}">
+            <button class="btn bg-faded text-black" type="button" name="button">
+              Logout
+            </button>
+          </a>
+			    {% endif %}
+
+        </div>
+      </header>
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

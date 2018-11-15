@@ -1,0 +1,16 @@
+{% extends "structure.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h1> Are you sure you want to delete {{restaurant.name}}? </h1>
+  </div>
+</div>
+<div class="row">
+  <form action="{{url_for('deleteRestaurant', restaurant_id=restaurant.id)}}" method = 'post'>
+      <input class="btn btn-danger" type='submit' value = 'Delete'>
+      <a class="text-white" href="{{url_for('restaurants')}}">
+        <button class="btn btn-warning text-white" type="button" name="button">Cancel</button>
+      </a>
+  </form>
+</div>
+{% endblock %}

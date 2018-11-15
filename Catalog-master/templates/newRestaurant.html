@@ -1,0 +1,30 @@
+{% extends "structure.html" %}
+{% block content %}
+<header class="row">
+  <div class="col-md-12 text-center bg-success">
+    <h1 class="text-white">Restaurants</h1>
+  </div>
+</header>
+<article class="row">
+  <div class="col-md-6">
+    <form action="{{url_for('newRestaurant')}}" method="POST">
+      <div class="form-group">
+        <h4>
+          Create a new restaurant
+        </h4>
+      </div>
+      <div class="form-group">
+        <label for="RestaurantName">Name:</label>
+        <input name="name" type="text" class="form-control" id="RestaurantName" placeholder="Name of Restaurant">
+      </div>
+      <div class="form-group">
+        <input class="btn btn-primary text-white" type="submit" value="Create" name="submit">
+        <button class="btn btn-danger text-white" type="button" name="button">
+          <a class="text-white" href="{{url_for('restaurants')}}">cancel</a>
+        </button>
+      </div>
+    </form>
+  </div>
+</article>
+
+{% endblock %}

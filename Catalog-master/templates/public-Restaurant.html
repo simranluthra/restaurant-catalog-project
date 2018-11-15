@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <article class="row bg-dark p-2 pl-4">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+      <div class="bg-secondary p-2">
+        {% for message in messages %}
+        <span class="text-white">{{message}}</span>
+        <br class="col-md-12">
+        {% endfor %}
+      </div>
+      {% endif %}
+    {% endwith %}
+  </article>
+  <article class="row bg-dark">
+    {% for restaurant in restaurants %}
+    <div class="card text-white bg-dark border-white ml-5 mb-4 mt-5">
+      <div class="card-body">
+      <div class="col-md-10 mt-2 ml-4 mr-4 pl-3 pr-3">
+        <a class="h3 text-white" href = "{{url_for('restaurantMenu', restaurant_id = restaurant.id)}}">{{ restaurant.name }}</a>
+        <hr>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+  </article>
+
+{% endblock %}
